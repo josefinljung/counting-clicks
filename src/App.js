@@ -1,10 +1,24 @@
 import './App.css';
-import Counter from './components/Counter';
+import Buttons from './components/Buttons';
+import {createUseStyles} from 'react-jss';
 
-function App() {
+const appStyle = createUseStyles({
+  App: {
+    display: 'flex',
+    justifyContent: 'center',
+    height: '100vh',
+    alignItems: 'center',
+    '@media screen and (max-width: 720px)': {
+      flexFlow: 'column',
+    },
+  }
+})
+
+const App = () => {
+  const classes = appStyle();
   return (
-    <div className="App">
-      <Counter />
+    <div className={classes.App}>
+      <Buttons />
     </div>
   );
 }
