@@ -6,17 +6,20 @@ const counterStyle = createUseStyles({
         display: 'inline',
         fontFamily: 'arial',
         fontWeight: 'bold',
+        fontSize: "2rem",
+        minWidth: "190px",
+        // textAlign: 'center'
         // '@media screen and (max-width: 720px)': {
         //     display: 'block'
         // }
     }
 })
 
-const Counter = () =>  {
+const Counter = ({number}) =>  {
     const classes = counterStyle();
     return (
         <div className={classes.resultDiv}>
-            Counter: <span>0</span>
+            Counter: <span>{number}</span>
         </div>
     );
 }
