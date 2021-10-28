@@ -16,6 +16,7 @@ const Buttons = () => {
 
     const decrementButtonStyle = createUseStyles((theme) => ({
         button: {
+            width: theme.width,
             background: 'white',
             borderRadius: theme.borderRadius,
             border: "2px solid black",
@@ -34,12 +35,13 @@ const Buttons = () => {
         },
         label: {
             fontWeight: 'bold',
-            textTransform: theme.textTransform
-        }
+            textTransform: theme.textTransform,
+        },
     }))
 
     const IncrementButtonStyle = createUseStyles((theme) => ({
         button: {
+            width: theme.width,
             background: 'hotpink',
             borderRadius: theme.borderRadius,
             border: "2px solid hotpink",
@@ -67,7 +69,9 @@ const Buttons = () => {
         const classes = decrementButtonStyle(props)
         return (
             <button onClick={decNumber} className={classes.button}>
-                <span className={classes.label}>- Decrement</span>
+                <span className={classes.label}>
+                    - Decrement
+                </span>
             </button>
         )
     }
@@ -77,13 +81,16 @@ const Buttons = () => {
         const classes = IncrementButtonStyle({...props, theme})
         return (
             <button onClick={incNumber} className={classes.button}>
-                <span className={classes.label}>+ Increment</span>
+                <span className={classes.label}>
+                    + Increment
+                </span>
             </button>
         )
     }
 
     const theme = {
         display: 'inline',
+        width: "240px",
         textTransform: 'uppercase',
         margin: "20px",
         borderRadius: "30px",
