@@ -5,10 +5,12 @@ import {createUseStyles} from 'react-jss';
 const appStyle = createUseStyles({
   App: {
     display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
     justifyContent: 'center',
     height: '100vh',
     alignItems: 'center',
-    '@media screen and (max-width: 720px)': {
+    '@media screen and (max-width: 992px)': {
       flexFlow: 'column',
     },
   }

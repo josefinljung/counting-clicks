@@ -1,5 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss';
+import GithubData from './GithubData';
 
 const counterStyle = createUseStyles({
     numberDiv: {
@@ -9,19 +10,19 @@ const counterStyle = createUseStyles({
         fontWeight: 'bold',
         fontSize: "2rem",
         minWidth: "210px",
-        // textAlign: 'center'
-        // '@media screen and (max-width: 720px)': {
-        //     display: 'block'
-        // }
     }
 })
 
 const Counter = ({number}) =>  {
     const classes = counterStyle();
     return (
-        <div className={classes.numberDiv}>
-            Counter: <span>{number}</span>
-        </div>
+        <React.Fragment>
+            <div className={classes.numberDiv}>
+                Counter: <span>{number}</span>
+            </div>
+
+            <GithubData number={number}/>
+        </React.Fragment>
     );
 }
 

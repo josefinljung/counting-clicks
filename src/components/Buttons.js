@@ -27,11 +27,14 @@ const Buttons = () => {
             '&:hover': {
                 background: 'black',
                 color: 'white',
-                transition: theme.transition
+                transition: theme.transition,
+                cursor: 'pointer',
             },
-            // '@media screen and (max-width: 720px)': {
-            //     display: 'block'
-            // }
+
+            '&:active': {
+                background: 'black',
+                color: 'white',
+            },
         },
         label: {
             fontWeight: 'bold',
@@ -52,11 +55,13 @@ const Buttons = () => {
             '&:hover': {
                 background: 'rebeccapurple',
                 border: "2px solid rebeccapurple",
-                transition: theme.transition
+                transition: theme.transition,
+                cursor: 'pointer',
             },
-            // '@media screen and (max-width: 720px)': {
-            //     display: 'block'
-            // },
+            '&:active': {
+                background: 'rebeccapurple',
+                border: "2px solid rebeccapurple",
+            },
         },
         label: {
             fontWeight: 'bold',
@@ -68,11 +73,13 @@ const Buttons = () => {
     const DecrementButton = ({children, ...props}) => {
         const classes = decrementButtonStyle(props)
         return (
-            <button onClick={decNumber} className={classes.button}>
-                <span className={classes.label}>
-                    - Decrement
-                </span>
-            </button>
+            <div>
+                <button onClick={decNumber} className={classes.button}>
+                    <span className={classes.label}>
+                        - Decrement
+                    </span>
+                </button>
+            </div>
         )
     }
 
@@ -80,11 +87,13 @@ const Buttons = () => {
         const theme = useTheme()
         const classes = IncrementButtonStyle({...props, theme})
         return (
-            <button onClick={incNumber} className={classes.button}>
-                <span className={classes.label}>
-                    + Increment
-                </span>
-            </button>
+            <div>
+                <button onClick={incNumber} className={classes.button}>
+                    <span className={classes.label}>
+                        + Increment
+                    </span>
+                </button>
+            </div>
         )
     }
 
@@ -107,10 +116,5 @@ const Buttons = () => {
         </ThemeProvider>
     )
 }
-
-
-
-
-
 
 export default Buttons;
