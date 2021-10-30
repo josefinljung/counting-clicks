@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const element = <FontAwesomeIcon icon={faStar} />
-// import axios from 'axios';
-
 
 const APIDataStyle = createUseStyles({
+    loadingContainer: {
+
+    },
     apiDataContainer: {
         color: 'rebeccapurple',
         fontFamily: 'arial',
@@ -18,6 +19,7 @@ const APIDataStyle = createUseStyles({
         verticalAlign: 'middle',
     },
     repoNameLink: {
+        color: 'rebeccapurple',
         textDecoration: 'none',
         '&:hover': {
             color: 'hotpink',
@@ -36,30 +38,54 @@ const APIData = (props) => {
     const classes = APIDataStyle();
   
     const [repo, setRepo] = useState('');  
+    const [hasError, setHasError] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
 
         async function fetchData() {
-            const response = await fetch(`https://api.github.com/repos/${repositoryName}`);
+            setIsLoading(true);
+            setHasError(false);
+            try {
+                const response = await fetch(`https://api.github.com/repos/${repositoryName}`);
             
-            const data = await response.json();
-            setRepo(data);
+                const data = await response.json();
+                setRepo(data);
+ 
+                if (data.message) {
+                    setHasError(true)
+                    setErrorMessage(data.message)
+                } else {
+                    setHasError(false)
+                }
+            }
 
+            catch (error) {
+                setHasError(true);
+            }
+            setIsLoading(false);
         }
+        
         fetchData();
-    }, [repositoryName]);
+    }, [setRepo, repositoryName]);
 
     return (
         <React.Fragment>  
-             <div className={classes.apiDataContainer}>
-                 <h2>
-                    <a className={classes.repoNameLink} href={repo.html_url} target="_blank" rel="noopener noreferrer">{repo.full_name}</a>
-                    <span className={classes.stargazeContainer}>
-                          {element} {repo.stargazers_count}
-                    </span>
-                 </h2>
-                 <div>{repo.description}</div>
-            </div>
+            <div>
+                {isLoading && <div className={classes.loadingContainer}><h2>Loading...</h2></div>}
+                {hasError && repo ? (<div>{errorMessage}</div>) : ( 
+                     <div className={classes.apiDataContainer}>
+                        <h2>
+                            <a className={classes.repoNameLink} href={repo.html_url} target="_blank" rel="noopener noreferrer">{repo.full_name}</a>
+                            <span className={classes.stargazeContainer}>
+                                {element} {repo.stargazers_count}
+                            </span>
+                        </h2>
+                        <div>{repo.description}</div>
+                    </div>
+                )}
+        </div>
         </React.Fragment>
     );
 };
