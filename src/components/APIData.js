@@ -15,6 +15,7 @@ const APIDataStyle = createUseStyles({
     stargazeContainer: {
         marginLeft: "10px",
         fontSize: "14px",
+        verticalAlign: 'middle',
     },
     repoNameLink: {
         textDecoration: 'none',
@@ -30,30 +31,26 @@ const APIDataStyle = createUseStyles({
     }
 })
 
-const APIData = () => {
+const APIData = (props) => {
+    const {repositoryName } = props; 
     const classes = APIDataStyle();
-
-    console.log()
+  
     const [repo, setRepo] = useState('');  
 
     useEffect(() => {
-        async function fetchData() {
-            const response = await fetch("https://api.github.com/repos/expressjs/express");
 
-            //Dynamic API
-            // const response = await fetch(`https://api.github.com/repos/${repositoryName})`;
+        async function fetchData() {
+            const response = await fetch(`https://api.github.com/repos/${repositoryName}`);
             
             const data = await response.json();
             setRepo(data);
-            // console.log(data.id)
- 
+
         }
         fetchData();
-    }, []);
+    }, [repositoryName]);
 
     return (
         <React.Fragment>  
-
              <div className={classes.apiDataContainer}>
                  <h2>
                     <a className={classes.repoNameLink} href={repo.html_url} target="_blank" rel="noopener noreferrer">{repo.full_name}</a>
@@ -62,17 +59,7 @@ const APIData = () => {
                     </span>
                  </h2>
                  <div>{repo.description}</div>
-
-                {/* {repo && repo.map(function(thisRepo){
-                    return(
-                        <li key={thisRepo.id}>
-                            {thisRepo.full_name}
-                        </li>
-                    )
-                })} */}
-
             </div>
-
         </React.Fragment>
     );
 };

@@ -15,19 +15,20 @@ const allRepos = [
 const GithubData = ({number}) => {
 
     // const repositoryName = (index === number);
+    let repositoryName = ''; 
 
     // Shows name repo-name with index number that matches number
     const myRepos = allRepos.map(function(name, index){
+   
         return (
-            index === number ? (<div key={index}>{name}</div>) : (null)
+            index === number ? (repositoryName = name) : ('no name')
             )
         })
 
     return (
         <React.Fragment>
-            {myRepos}
             {/* {listItems} */}
-            <APIData />
+            <APIData repositoryName={repositoryName}/>
             {/* <APIData repositoryName={repositoryName} /> */}
         </React.Fragment>
     );
