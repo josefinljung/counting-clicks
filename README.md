@@ -1,24 +1,26 @@
-# To get the node_modules
+# To get the project running
 
-In the terminal, run 'npm install'.
+## Begin with...
+
+To get the node_modules, run 'npm install' in the terminal.
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the terminal run the following:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Icons used
+## Icons used
 
-Three iconcs from FontAwesome were used in this project.
+Three icons from FontAwesome were used in this project.
 
 https://fontawesome.com/v5.15/icons/plus?style=solid
 https://fontawesome.com/v5.15/icons/minus?style=solid
 https://fontawesome.com/v5.15/icons/star?style=solid
 
-#### API's used
+## API's used
 
 Github's API https://api.github.com/repos/ was used to display repository information in this project.
