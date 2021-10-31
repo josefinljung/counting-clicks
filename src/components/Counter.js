@@ -6,7 +6,6 @@ const counterStyle = createUseStyles({
     numberDiv: {
         display: 'inline',
         textAlign: 'center',
-        fontFamily: 'arial',
         fontWeight: 'bold',
         fontSize: "2rem",
         minWidth: "210px",

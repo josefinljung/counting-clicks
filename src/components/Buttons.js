@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import {createUseStyles, useTheme, ThemeProvider} from 'react-jss';
 import Counter from './Counter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+
+const minusIcon = <FontAwesomeIcon icon={faMinus} />
+const plusIcon = <FontAwesomeIcon icon={faPlus} />
 
 const Buttons = () => {
 
@@ -40,6 +45,9 @@ const Buttons = () => {
             fontWeight: 'bold',
             textTransform: theme.textTransform,
         },
+        labelIcon: {
+            marginRight: "10px",
+        }
     }))
 
     const IncrementButtonStyle = createUseStyles((theme) => ({
@@ -67,6 +75,9 @@ const Buttons = () => {
             fontWeight: 'bold',
             color: 'white',
             textTransform: theme.textTransform
+        },
+        labelIcon: {
+            marginRight: "10px",
         }
     }))
 
@@ -75,9 +86,10 @@ const Buttons = () => {
         return (
             <div>
                 <button onClick={decNumber} className={classes.button}>
-                    <span className={classes.label}>
-                        - Decrement
-                    </span>
+                    <div className={classes.label}>
+                    <span className={classes.labelIcon}>{minusIcon}</span>   
+                        Decrement
+                    </div>
                 </button>
             </div>
         )
@@ -89,9 +101,10 @@ const Buttons = () => {
         return (
             <div>
                 <button onClick={incNumber} className={classes.button}>
-                    <span className={classes.label}>
-                        + Increment
-                    </span>
+                    <div className={classes.label}>
+                        <span className={classes.labelIcon}>{plusIcon}</span>   
+                        Increment
+                    </div>
                 </button>
             </div>
         )
@@ -99,13 +112,13 @@ const Buttons = () => {
 
     const theme = {
         display: 'inline',
-        width: "240px",
-        textTransform: 'uppercase',
+        width: "260px",
         margin: "20px",
         borderRadius: "30px",
         padding: "20px 45px 20px 45px",
-        transition: "0.5s",
         fontSize: "1.3rem",
+        textTransform: 'uppercase',
+        transition: "0.5s",
     }
 
     return (

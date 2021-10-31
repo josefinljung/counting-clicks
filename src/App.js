@@ -8,10 +8,14 @@ const appStyle = createUseStyles({
     flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'center',
-    height: '100vh',
     alignItems: 'center',
-    '@media screen and (max-width: 992px)': {
+    marginTop: "200px",
+    fontFamily: 'arial',
+    padding: "0px 100px 50px 100px",
+    '@media screen and (max-width: 1040px)': {
       flexFlow: 'column',
+      marginTop: "100px",
+      padding: "0px 50px 50px 50px"
     },
   }
 })

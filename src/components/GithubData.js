@@ -14,10 +14,8 @@ const allRepos = [
 
 const GithubData = ({number}) => {
 
-    // const repositoryName = (index === number);
     let repositoryName = ''; 
 
-    // Shows name repo-name with index number that matches number
     allRepos.map(function(name, index){
    
         return (

@@ -3,15 +3,15 @@ import { createUseStyles } from 'react-jss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-const element = <FontAwesomeIcon icon={faStar} />
+const starIcon = <FontAwesomeIcon icon={faStar} />
 
 const APIDataStyle = createUseStyles({
     loadingContainer: {
-
+        
     },
     apiDataContainer: {
         color: 'rebeccapurple',
-        fontFamily: 'arial',
+        marginTop: "50px",
     },
     stargazeContainer: {
         marginLeft: "10px",
@@ -34,7 +34,7 @@ const APIDataStyle = createUseStyles({
 })
 
 const APIData = (props) => {
-    const {repositoryName } = props; 
+    const {repositoryName} = props; 
     const classes = APIDataStyle();
   
     const [repo, setRepo] = useState('');  
@@ -72,14 +72,14 @@ const APIData = (props) => {
 
     return (
         <React.Fragment>  
-            <div>
-                {isLoading && <div className={classes.loadingContainer}><h2>Loading...</h2></div>}
-                {hasError && repo ? (<div>{errorMessage}</div>) : ( 
-                     <div className={classes.apiDataContainer}>
+            <div className={classes.apiDataContainer}>
+                {isLoading && <div className={classes.loadingContainer}><h2>Loading repository..</h2></div>}
+                {hasError && repo ? (<div><h2>{errorMessage}</h2></div>) : ( 
+                     <div>
                         <h2>
                             <a className={classes.repoNameLink} href={repo.html_url} target="_blank" rel="noopener noreferrer">{repo.full_name}</a>
                             <span className={classes.stargazeContainer}>
-                                {element} {repo.stargazers_count}
+                                {starIcon} {repo.stargazers_count}
                             </span>
                         </h2>
                         <div>{repo.description}</div>
