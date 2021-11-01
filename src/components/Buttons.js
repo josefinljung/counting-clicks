@@ -35,7 +35,6 @@ const Buttons = () => {
                 transition: theme.transition,
                 cursor: 'pointer',
             },
-
             '&:active': {
                 background: 'black',
                 color: 'white',
@@ -87,7 +86,7 @@ const Buttons = () => {
             <div>
                 <button onClick={decNumber} className={classes.button}>
                     <div className={classes.label}>
-                    <span className={classes.labelIcon}>{minusIcon}</span>   
+                        <span className={classes.labelIcon}>{minusIcon}</span>   
                         Decrement
                     </div>
                 </button>
@@ -96,7 +95,6 @@ const Buttons = () => {
     }
 
     const IncrementButton = ({children, ...props}) => {
-        const theme = useTheme()
         const classes = IncrementButtonStyle({...props, theme})
         return (
             <div>
@@ -123,9 +121,9 @@ const Buttons = () => {
 
     return (
         <ThemeProvider theme={theme}>
-                <DecrementButton />
-                <Counter number={number}/>
-                <IncrementButton />
+            <DecrementButton />
+            <Counter number={number}/>
+            <IncrementButton />
         </ThemeProvider>
     )
 }

@@ -52,7 +52,6 @@ const APIData = ({repositoryName}) => {
             setHasError(false);
             try {
                 const response = await fetch(`https://api.github.com/repos/${repositoryName}`);
-            
                 const data = await response.json();
                 setRepo(data);
  
@@ -89,7 +88,7 @@ const APIData = ({repositoryName}) => {
                         <div>{repo.description}</div>
                     </div>
                 )}
-        </div>
+            </div>
         </React.Fragment>
     );
 };
