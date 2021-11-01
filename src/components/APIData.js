@@ -33,8 +33,7 @@ const APIDataStyle = createUseStyles({
     }
 })
 
-const APIData = (props) => {
-    const {repositoryName} = props; 
+const APIData = ({repositoryName}) => {
     const classes = APIDataStyle();
   
     const [repo, setRepo] = useState('');  
@@ -46,6 +45,10 @@ const APIData = (props) => {
 
         async function fetchData() {
             setIsLoading(true);
+            const timeout = setTimeout(() => {
+                setIsLoading(false)
+            }, 80000);
+
             setHasError(false);
             try {
                 const response = await fetch(`https://api.github.com/repos/${repositoryName}`);
@@ -65,6 +68,7 @@ const APIData = (props) => {
                 setHasError(true);
             }
             setIsLoading(false);
+            clearTimeout(timeout);
         }
         
         fetchData();
