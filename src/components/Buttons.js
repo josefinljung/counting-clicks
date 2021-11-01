@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {createUseStyles, useTheme, ThemeProvider} from 'react-jss';
+import {createUseStyles, ThemeProvider} from 'react-jss';
 import Counter from './Counter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
