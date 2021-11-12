@@ -18,7 +18,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Three icons from FontAwesome were used in this project.
 
 https://fontawesome.com/v5.15/icons/plus?style=solid
+
 https://fontawesome.com/v5.15/icons/minus?style=solid
+
 https://fontawesome.com/v5.15/icons/star?style=solid
 
 ## API's used
